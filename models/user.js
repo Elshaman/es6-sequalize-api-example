@@ -16,7 +16,15 @@ module.exports = (sequelize, DataTypes)=> {
                         args:true,
                         msg:"este campo solo debe tener letras" 
                     },
-                    max: 10        
+                    max:{
+                        args: 10,
+                        msg: "maximo 10"    
+                    } ,
+                    min:{
+                        args: 2,
+                        msg: "minimo 2"
+                    },
+                    notEmpty: true,        
                 },
                 allowNull: false,
             },

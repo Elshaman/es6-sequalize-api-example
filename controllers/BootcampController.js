@@ -39,13 +39,11 @@ exports.createBootcamp =  async(req, res)=>{
             })   
         } catch (error) {
             if(error instanceof ValidationError){
+                errores = error.errors.map(e=>e.message)
                 res.status(400).json(
                     {
                         "success" : false,
-                        "errors": [
-                            error.errors[0].message,
-                            error.errors[1].message
-                        ]
+                        "errors": errores
                     }  
                 ) 
             }else{
