@@ -1,5 +1,5 @@
 const sequelize = require('../config/seq')
-const {DataTypes} = require('sequelize') 
+const {DataTypes, ValidationError} = require('sequelize') 
 const UserModel = require("../models/user")
 const user = UserModel(sequelize , DataTypes )
 
@@ -38,7 +38,24 @@ exports.createBootcamp =  async(req, res)=>{
                 "data": jane
             })   
         } catch (error) {
-            res.status(400).json(error)
+            if(error instanceof ValidationError){
+                res.status(400).json(
+                    {
+                        "success" : false,
+                        "errors": [
+                            error.errors[0].message,
+                            error.errors[1].message
+                        ]
+                    }  
+                ) 
+            }else{
+                res.status(400).json(
+                    {
+                        "success" : false,
+                        "error": error 
+                    }  
+                ) 
+            }
         }
 }
 

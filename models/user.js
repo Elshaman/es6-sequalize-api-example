@@ -11,6 +11,13 @@ module.exports = (sequelize, DataTypes)=> {
             },
             name: {
                 type: DataTypes.STRING,
+                validate:{
+                    isAlpha:{
+                        args:true,
+                        msg:"este campo solo debe tener letras" 
+                    },
+                    max: 10        
+                },
                 allowNull: false,
             },
             email:{

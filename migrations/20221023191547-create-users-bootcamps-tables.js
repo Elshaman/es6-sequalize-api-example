@@ -60,14 +60,6 @@ module.exports = {
               type: Sequelize.FLOAT,
               defaultValue: 1
           },
-          user_id: {
-              type: Sequelize.INTEGER,
-              // This links the category_id column to the id column in the categories table
-              references: {
-                  model: 'users',
-                  key: 'id',
-              },
-          },
           created_at: {
               allowNull: true,
               type: Sequelize.DATE,
@@ -105,14 +97,6 @@ module.exports = {
               type: Sequelize.STRING,
               allowNull: false
           },
-          bootcamp_id: {
-              type: Sequelize.INTEGER,
-              // This links the category_id column to the id column in the categories table
-              references: {
-                  model: 'bootcamps',
-                  key: 'id',
-              },
-          },
           created_at: {
               allowNull: true,
               type: Sequelize.DATE,
@@ -138,22 +122,7 @@ module.exports = {
               type: Sequelize.INTEGER,
               allowNull: false,
           },
-          bootcamp_id: {
-              type: Sequelize.INTEGER,
-              // This links the category_id column to the id column in the categories table
-              references: {
-                  model: 'bootcamps',
-                  key: 'id',
-              },
-          },
-          user_id: {
-              type: Sequelize.INTEGER,
-              // This links the category_id column to the id column in the categories table
-              references: {
-                  model: 'users',
-                  key: 'id',
-              },
-          },
+          
       });
 
 
